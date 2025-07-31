@@ -277,6 +277,66 @@ This project is licensed under the MIT License.
 
 ---
 
+
+## 🚀 Deployment (Apache2 Remote Host)
+
+To deploy on a remote host with Apache2:
+
+### 1. Build Frontend
+
+```bash
+cd frontend
+npm run build
+```
+This creates a `build/` directory with static files.
+
+### 2. Configure Apache2
+
+- Point your Apache2 DocumentRoot to the `frontend/build` directory for the React app.
+- Use a reverse proxy for API requests to the backend (Node.js server).
+
+#### Example Apache2 VirtualHost
+
+```apache
+<VirtualHost *:80>
+    ServerName yourdomain.com
+    DocumentRoot /var/www/html/frontend/build
+
+    <Directory /var/www/html/frontend/build>
+        Options -Indexes +FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    # React Router fallback
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.html [QSA,L]
+
+    # Proxy API requests to backend
+    ProxyPass /api http://localhost:5000/api
+    ProxyPassReverse /api http://localhost:5000/api
+</VirtualHost>
+```
+
+### 3. Start Backend
+
+Run your Node.js backend (e.g., on port 5000):
+
+```bash
+cd backend
+npm run start
+```
+
+### 4. Enable Apache2 Modules
+
+```bash
+sudo a2enmod proxy proxy_http rewrite
+sudo systemctl restart apache2
+```
+
+---
+
 ## 📚 Links
 
 - [Project Board](https://github.com/marjan-shuplinoski/Ecommerce-Node-React/projects)
