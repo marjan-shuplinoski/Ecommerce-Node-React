@@ -1,73 +1,267 @@
-# E-commerce Node.js & React Application
 
-A full-stack e-commerce application built with Node.js/Express backend and React frontend.
 
-## Project Structure
+<h1 align="center">🛒 Ecommerce Node.js & React Project</h1>
 
-```
-ecommerce-app/
-├── backend/           # Node.js/Express API server
-├── frontend/          # React client application
-├── docs/             # Documentation and PRD
-├── postman/          # Postman collections for API testing
+<p align="center">
+  <a href="https://github.com/marjan-shuplinoski/Ecommerce-Node-React"><img src="https://img.shields.io/github/stars/marjan-shuplinoski/Ecommerce-Node-React?style=social" alt="GitHub stars" /></a>
+  <img src="https://img.shields.io/badge/Node.js-Express-green?logo=node.js" />
+  <img src="https://img.shields.io/badge/React-Frontend-blue?logo=react" />
+  <img src="https://img.shields.io/badge/MongoDB-Mongoose-brightgreen?logo=mongodb" />
+  <img src="https://img.shields.io/badge/CI/CD-GitHub%20Actions-purple?logo=github-actions" />
+</p>
+
+---
+
+## � Overview
+
+**Ecommerce-Node-React** is a full-stack e-commerce application built with Node.js/Express (backend) and React (frontend). It features atomic task planning, strict standards, CI/CD, and full test coverage.
+
+---
+
+## �📦 Root Structure
+
+```text
+Ecommerce-Node-React/
+├── backend/
+│   ├── package.json
+│   ├── .env
+│   ├── server.js
+│   ├── /config
+│   ├── /controllers
+│   ├── /models
+│   ├── /routes
+│   ├── /middleware
+│   ├── /utils
+│   └── /tests
+├── frontend/
+│   ├── package.json
+│   ├── .env
+│   ├── /public
+│   ├── /src
+│   │   ├── /components
+│   │   ├── /pages
+│   │   ├── /hooks
+│   │   ├── /contexts
+│   │   ├── /services
+│   │   ├── /utils
+│   │   ├── /assets
+│   │   ├── /styles
+│   │   └── App.js
+│   └── /tests
 └── README.md
 ```
 
-## Features
+---
 
-### Backend (Node.js/Express)
-- RESTful API with Express.js
-- MongoDB with Mongoose ODM
-- JWT Authentication
-- CRUD operations for all e-commerce entities
-- Comprehensive test suite
+## 🚀 Backend (Node.js/Express)
 
-### Frontend (React)
-- Modern React with hooks
-- Responsive design
-- Context API for state management
-- API integration with backend
-- Component testing
+```text
+backend/
+├── server.js              // Entry point
+├── .env                   // Environment variables
+├── package.json
+├── /config                // DB and app config files
+│   └── db.js
+├── /controllers           // Route handlers
+│   ├── userController.js
+│   ├── productController.js
+│   ├── ...
+├── /models                // Mongoose schemas
+│   ├── User.js
+│   ├── Product.js
+│   ├── ...
+├── /routes                // Express route files
+│   ├── userRoutes.js
+│   ├── productRoutes.js
+│   ├── ...
+├── /middleware            // Auth, error handlers, etc.
+│   ├── auth.js
+│   ├── errorHandler.js
+├── /utils                 // Helper functions
+│   └── ...
+├── /tests                 // Backend tests (Jest, supertest)
+│   └── ...
+```
 
-### Models
-- **User**: User management and authentication
-- **Product**: Product catalog management
-- **Category**: Product categorization
-- **Order**: Order processing and management
-- **Cart**: Shopping cart functionality
-- **Payment**: Payment processing
-- **Coupon**: Discount and coupon system
-- **Delivery**: Shipping and delivery management
+---
 
-## Quick Start
+## 🌐 Frontend (React)
 
-### Backend Setup
+```text
+frontend/
+├── package.json
+├── .env
+├── /public                // Static files (index.html, favicon)
+├── /src
+│   ├── App.js
+│   ├── index.js
+│   ├── /components        // Reusable UI components
+│   │   ├── ProductCard.jsx
+│   │   ├── Navbar.jsx
+│   ├── /pages             // Route-based pages
+│   │   ├── Home.jsx
+│   │   ├── ProductList.jsx
+│   │   ├── Cart.jsx
+│   │   ├── Checkout.jsx
+│   ├── /hooks             // Custom hooks
+│   │   └── useCart.js
+│   ├── /contexts          // React context providers
+│   │   └── AuthContext.js
+│   ├── /services          // API service calls
+│   │   └── api.js
+│   ├── /utils             // Utility functions
+│   │   └── formatPrice.js
+│   ├── /assets            // Images, fonts, etc.
+│   ├── /styles            // CSS/SCSS files
+│   │   └── main.css
+├── /tests                 // Frontend tests (Jest, React Testing Library)
+│   └── ...
+```
+
+---
+
+## 🗂️ Models
+
+Main Mongoose models (in `/models`):
+
+- **User**
+- **Product**
+- **Category**
+- **Order**
+- **Cart**
+- **Payment**
+- **Coupon**
+- **Delivery**
+
+Each model defines the schema and relationships for its entity (e.g., Order references User, Product, Payment, Coupon).
+
+---
+
+## 🧩 Controllers
+
+Separate controllers (in `/controllers`) for CRUD operations on each model:
+
+- `userController.js`
+- `productController.js`
+- `categoryController.js`
+- `orderController.js`
+- `cartController.js`
+- `paymentController.js`
+- `couponController.js`
+- `deliveryController.js`
+
+Each controller exports functions for:
+- Creating a new resource
+- Getting all resources
+- Getting a resource by ID
+- Updating a resource
+- Deleting a resource
+
+---
+
+## 🔗 Routes
+
+Express routes (in `/routes`) for each model/controller, exposing RESTful endpoints:
+
+- `userRoutes.js`
+- `productRoutes.js`
+- `categoryRoutes.js`
+- `orderRoutes.js`
+- `cartRoutes.js`
+- `paymentRoutes.js`
+- `couponRoutes.js`
+- `deliveryRoutes.js`
+
+**Example endpoints:**
+- `POST /api/orders` (Create Order)
+- `GET /api/orders` (Get all Orders)
+- `GET /api/orders/:id` (Get Order by ID)
+- `PUT /api/orders/:id` (Update Order)
+- `DELETE /api/orders/:id` (Delete Order)
+- _(Similar pattern for Cart, Payment, Coupon, Delivery, etc.)_
+
+---
+
+## 📋 Summary Table
+
+<table>
+  <thead>
+    <tr>
+      <th>Entity</th>
+      <th>Model</th>
+      <th>Controller</th>
+      <th>Routes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>User</td><td>User.js</td><td>userController.js</td><td>userRoutes.js</td></tr>
+    <tr><td>Product</td><td>Product.js</td><td>productController.js</td><td>productRoutes.js</td></tr>
+    <tr><td>Category</td><td>Category.js</td><td>categoryController.js</td><td>categoryRoutes.js</td></tr>
+    <tr><td>Order</td><td>Order.js</td><td>orderController.js</td><td>orderRoutes.js</td></tr>
+    <tr><td>Cart</td><td>Cart.js</td><td>cartController.js</td><td>cartRoutes.js</td></tr>
+    <tr><td>Payment</td><td>Payment.js</td><td>paymentController.js</td><td>paymentRoutes.js</td></tr>
+    <tr><td>Coupon</td><td>Coupon.js</td><td>couponController.js</td><td>couponRoutes.js</td></tr>
+    <tr><td>Delivery</td><td>Delivery.js</td><td>deliveryController.js</td><td>deliveryRoutes.js</td></tr>
+  </tbody>
+</table>
+
+---
+
+## ⚡ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/marjan-shuplinoski/Ecommerce-Node-React.git
+cd Ecommerce-Node-React
+```
+
+Install dependencies for backend and frontend:
+
+```bash
+cd backend && npm install
+cd ../frontend && npm install
+```
+
+---
+
+## ▶️ Usage
+
+Start backend server:
+
 ```bash
 cd backend
-npm install
 npm run dev
 ```
 
-### Frontend Setup
+Start frontend app:
+
 ```bash
 cd frontend
-npm install
 npm start
 ```
 
-## Documentation
+---
 
-See the `/docs` folder for detailed documentation including:
-- Product Requirements Document (PRD)
-- API Documentation
-- Database Schema
-- Development Guidelines
+## 🧪 Testing
 
-## API Testing
+Run backend tests:
 
-Import the Postman collections from the `/postman` folder to test all API endpoints.
+```bash
+cd backend
+npm test
+```
 
-## Contributing
+Run frontend tests:
+
+```bash
+cd frontend
+npm test
+```
+
+---
+
+## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -75,6 +269,23 @@ Import the Postman collections from the `/postman` folder to test all API endpoi
 4. Run tests
 5. Submit a pull request
 
-## License
+---
 
-MIT License
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 📚 Links
+
+- [Project Board](https://github.com/marjan-shuplinoski/Ecommerce-Node-React/projects)
+- [Issues](https://github.com/marjan-shuplinoski/Ecommerce-Node-React/issues)
+- [Pull Requests](https://github.com/marjan-shuplinoski/Ecommerce-Node-React/pulls)
+
+---
+
+<p align="center">
+  <b>✨ Built with Node.js, Express, React, MongoDB, and Mongoose ✨</b><br>
+  <i>Atomic task planning, strict standards, CI/CD, and full test coverage.</i>
+</p>
