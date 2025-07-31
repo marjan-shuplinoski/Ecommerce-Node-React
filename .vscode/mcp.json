@@ -1,0 +1,26 @@
+{
+	"inputs": [],
+	"servers": {
+		"shrimp-task-manager": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"mcp-shrimp-task-manager"
+			],
+			"env": {
+				"DATA_DIR": "/home/marjan/Work/PROJECTS/Ecommerce-Node-React/tasks",
+				"TEMPLATES_USE": "en",
+				"ENABLE_GUI": "true"
+			},
+			"type": "stdio"
+		},
+		"puppeteer": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-puppeteer"
+			],
+			"type": "stdio"
+		}
+	}
+}
