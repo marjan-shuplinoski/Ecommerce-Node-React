@@ -2,3 +2,6 @@ tasks/Ecommerce-Node-React/tasks.json
 tasks/Ecommerce-Node-React/WebGUI.md
 shrimp-rules.md
 .github/copilot-instructions.md
+.github/instructions/copilot-instructions.instructions.md
+*/node_modules
+package-lock.json
