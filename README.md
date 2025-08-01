@@ -1,5 +1,3 @@
-
-
 <h1 align="center">🛒 Ecommerce Node.js & React Project</h1>
 
 <p align="center">
@@ -258,6 +256,31 @@ Run frontend tests:
 cd frontend
 npm test
 ```
+
+---
+
+## 🧪 Database Seeder
+
+A seeder script is available to populate the database with sample users, categories, products, coupons, carts, orders, payments, and deliveries, all properly linked for demo and development purposes.
+
+**Usage:**
+
+```bash
+cd backend/seeder
+node seeder.js
+```
+
+You can also use the npm script:
+
+```bash
+cd backend
+npm run seed
+```
+
+This will run the seeder script from the correct location.
+
+- The script will clear all collections and insert connected sample data.
+- Make sure your MongoDB server is running and `.env` is configured.
 
 ---
 
