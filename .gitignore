@@ -4,3 +4,4 @@ shrimp-rules.md
 .github/instructions/copilot-instructions.instructions.md
 */node_modules
 package-lock.json
+/old_backend
