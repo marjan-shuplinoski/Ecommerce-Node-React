@@ -5,3 +5,4 @@ shrimp-rules.md
 */node_modules
 package-lock.json
 /old_backend
+backend/.env
