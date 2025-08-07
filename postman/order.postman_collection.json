@@ -1,0 +1,10 @@
+{
+  "info": {"name": "Order API", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},
+  "item": [
+    {"name": "Create Order","request": {"method": "POST","header": [{"key": "Content-Type", "value": "application/json"},{"key": "Authorization", "value": "Bearer <user_token>"}],"body": {"mode": "raw","raw": "{\n  \"user\": \"<userId>\",\n  \"items\": [\n    { \"product\": \"<productId>\", \"quantity\": 1, \"price\": 19.99 }\n  ],\n  \"total\": 19.99,\n  \"status\": \"Pending\"\n}"},"url": {"raw": "http://localhost:5000/api/orders","host": ["http://localhost:5000"],"path": ["api","orders"]}}},
+    {"name": "Get All Orders","request": {"method": "GET","header": [{"key": "Authorization", "value": "Bearer <admin_token>"}],"url": {"raw": "http://localhost:5000/api/orders","host": ["http://localhost:5000"],"path": ["api","orders"]}}},
+    {"name": "Get Order By ID","request": {"method": "GET","header": [{"key": "Authorization", "value": "Bearer <user_or_admin_token>"}],"url": {"raw": "http://localhost:5000/api/orders/<orderId>","host": ["http://localhost:5000"],"path": ["api","orders","<orderId>"]}}},
+    {"name": "Update Order","request": {"method": "PUT","header": [{"key": "Content-Type", "value": "application/json"},{"key": "Authorization", "value": "Bearer <admin_token>"}],"body": {"mode": "raw","raw": "{\n  \"status\": \"Shipped\"\n}"},"url": {"raw": "http://localhost:5000/api/orders/<orderId>","host": ["http://localhost:5000"],"path": ["api","orders","<orderId>"]}}},
+    {"name": "Delete Order","request": {"method": "DELETE","header": [{"key": "Authorization", "value": "Bearer <admin_token>"}],"url": {"raw": "http://localhost:5000/api/orders/<orderId>","host": ["http://localhost:5000"],"path": ["api","orders","<orderId>"]}}}
+  ]
+}

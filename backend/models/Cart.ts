@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema, Model } from 'mongoose';
-import { Cart, CartItem } from '../types/cart.types';
+import { Cart, CartItem } from '../types/cart.types.js';
 
 export interface ICartItemDocument extends CartItem, Document {}
 export interface ICartDocument extends Omit<Cart, '_id'>, Document {}

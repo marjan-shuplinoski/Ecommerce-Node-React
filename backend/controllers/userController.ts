@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import '../models/Order';
-import userService from '../services/userService';
+import '../models/Order.js';
+import userService from '../services/userService.js';
 import { IUser } from '../types/user.types';
-import * as authService from '../services/authService';
+import * as authService from '../services/authService.js';
 
 export const register = async (req: Request, res: Response, next: NextFunction) => {
   try {

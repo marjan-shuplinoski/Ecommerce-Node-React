@@ -1,5 +1,5 @@
-import Order from '../models/Order';
-import { IOrder } from '../types/order.types';
+import Order from '../models/Order.js';
+import { IOrder } from '../types/order.types.js';
 
 export const createOrder = async (orderData: IOrder) => {
   const order = new Order(orderData);

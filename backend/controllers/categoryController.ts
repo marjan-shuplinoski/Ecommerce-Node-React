@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { categoryService } from '../services/categoryService';
+import { categoryService } from '../services/categoryService.js';
 import mongoose from 'mongoose';
 
 export const createCategory = async (req: Request, res: Response, next: NextFunction) => {

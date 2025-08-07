@@ -1,11 +1,11 @@
 
 import express from 'express';
-import { validateBody, validateParams } from '../middleware/validate';
+import { validateBody, validateParams } from '../middleware/validate.js';
 import {
   cartCreateSchema,
   cartUpdateSchema,
   cartIdParamSchema
-} from '../validation/cart.validation';
+} from '../validation/cart.validation.js';
 import {
   createCart,
   getCartById,
@@ -15,7 +15,7 @@ import {
   deleteCart,
   addItemToCart,
   removeItemFromCart
-} from '../controllers/cartController';
+} from '../controllers/cartController.js';
 
 const router = express.Router();
 

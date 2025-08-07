@@ -1,6 +1,6 @@
 
-import Payment from '../models/Payment';
-import { Payment as PaymentType } from '../types/payment.types';
+import Payment from '../models/Payment.js';
+import { Payment as PaymentType } from '../types/payment.types.js';
 import { Types } from 'mongoose';
 
 /**

@@ -1,5 +1,5 @@
-import CategoryModel, { ICategoryDocument } from '../models/Category';
-import { Category } from '../types/category.types';
+import CategoryModel, { ICategoryDocument } from '../models/Category.js';
+import { Category } from '../types/category.types.js';
 import mongoose from 'mongoose';
 
 export class CategoryService {

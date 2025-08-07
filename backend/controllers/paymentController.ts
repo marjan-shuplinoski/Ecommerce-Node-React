@@ -1,6 +1,6 @@
 
 import { Request, Response, NextFunction } from 'express';
-import * as paymentService from '../services/paymentService';
+import * as paymentService from '../services/paymentService.js';
 
 export const createPayment = async (req: Request, res: Response, next: NextFunction) => {
   try {

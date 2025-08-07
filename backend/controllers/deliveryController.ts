@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import Delivery from '../models/Delivery';
+import Delivery from '../models/Delivery.js';
 import { Delivery as DeliveryType } from '../types/delivery.types';
 
 export const createDelivery = async (req: Request, res: Response, next: NextFunction) => {

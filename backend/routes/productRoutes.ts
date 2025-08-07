@@ -1,20 +1,20 @@
 
 import express from 'express';
-import { rbac } from '../middleware/rbac';
-import { authenticate } from '../middleware/authenticate';
-import { validateBody, validateParams } from '../middleware/validate';
+import { rbac } from '../middleware/rbac.js';
+import { authenticate } from '../middleware/authenticate.js';
+import { validateBody, validateParams } from '../middleware/validate.js';
 import {
   productCreateSchema,
   productUpdateSchema,
   productIdParamSchema
-} from '../validation/product.validation';
+} from '../validation/product.validation.js';
 import {
   createProduct,
   getProductById,
   getAllProducts,
   updateProduct,
   deleteProduct
-} from '../controllers/productController';
+} from '../controllers/productController.js';
 
 const router = express.Router();
 

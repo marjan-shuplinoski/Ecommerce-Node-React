@@ -1,6 +1,7 @@
-import { loggingMiddleware } from './middleware/logging';
-import { applySecurityMiddleware } from './middleware/security';
+import { loggingMiddleware } from './middleware/logging.js';
+import { applySecurityMiddleware } from './middleware/security.js';
 import express, { Request, Response, NextFunction } from 'express';
+import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import path from 'path';
@@ -10,6 +11,27 @@ dotenv.config();
 const app = express();
 
 // Middleware
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'http://localhost:3000',
+  'http://127.0.0.1:3000'
+];
+app.use(cors({
+  origin: (origin, callback) => {
+    console.log('CORS request from origin:', origin);
+    // allow requests with no origin (like mobile apps, curl, Postman)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
+  exposedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 applySecurityMiddleware(app);
 app.use(loggingMiddleware);
@@ -25,14 +47,14 @@ if (mongoose.connection.readyState === 0) {
 
 // Routes
 
-import userRoutes from './routes/userRoutes';
-import productRoutes from './routes/productRoutes';
-import orderRoutes from './routes/orderRoutes';
-import cartRoutes from './routes/cartRoutes';
-import categoryRoutes from './routes/categoryRoutes';
-import couponRoutes from './routes/couponRoutes';
-import paymentRoutes from './routes/paymentRoutes';
-import deliveryRoutes from './routes/deliveryRoutes';
+import userRoutes from './routes/userRoutes.js';
+import productRoutes from './routes/productRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
+import cartRoutes from './routes/cartRoutes.js';
+import categoryRoutes from './routes/categoryRoutes.js';
+import couponRoutes from './routes/couponRoutes.js';
+import paymentRoutes from './routes/paymentRoutes.js';
+import deliveryRoutes from './routes/deliveryRoutes.js';
 
 app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import cartService from '../services/cartService';
+import cartService from '../services/cartService.js';
 
 export const createCart = async (req: Request, res: Response, next: NextFunction) => {
   try {

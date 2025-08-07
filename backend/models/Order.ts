@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema, Model } from 'mongoose';
-import { IOrder, IOrderItem, OrderStatus } from '../types/order.types';
+import { IOrder, IOrderItem, OrderStatus } from '../types/order.types.js';
 
 export interface IOrderItemDocument extends IOrderItem, Document {}
 export interface IOrderDocument extends Omit<IOrder, '_id'>, Document {}

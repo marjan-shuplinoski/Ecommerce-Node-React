@@ -1,18 +1,18 @@
 
 import express from 'express';
-import { validateBody, validateParams } from '../middleware/validate';
+import { validateBody, validateParams } from '../middleware/validate.js';
 import {
   couponCreateSchema,
   couponUpdateSchema,
   couponIdParamSchema
-} from '../validation/coupon.validation';
+} from '../validation/coupon.validation.js';
 import {
   createCoupon,
   getCoupons,
   getCouponById,
   updateCoupon,
   deleteCoupon
-} from '../controllers/couponController';
+} from '../controllers/couponController.js';
 
 const router = express.Router();
 

@@ -1,5 +1,5 @@
-import Delivery from '../models/Delivery';
-import { Delivery as DeliveryType } from '../types/delivery.types';
+import Delivery from '../models/Delivery.js';
+import { Delivery as DeliveryType } from '../types/delivery.types.js';
 
 export const createDelivery = async (deliveryData: DeliveryType) => {
   const delivery = new Delivery(deliveryData);

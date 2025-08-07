@@ -1,5 +1,5 @@
-import Product from '../models/Product';
-import { IProduct, ICreateProductRequest } from '../types/product.types';
+import Product from '../models/Product.js';
+import { IProduct, ICreateProductRequest } from '../types/product.types.js';
 import { FilterQuery, UpdateQuery } from 'mongoose';
 
 const productService = {

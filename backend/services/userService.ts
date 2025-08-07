@@ -1,4 +1,4 @@
-import User from '../models/User';
+import User from '../models/User.js';
 import { IUser } from '../types/user.types';
 import bcrypt from 'bcryptjs';
 import { FilterQuery, UpdateQuery } from 'mongoose';

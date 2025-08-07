@@ -1,20 +1,20 @@
 
 
 import express from 'express';
-import { authenticate } from '../middleware/authenticate';
-import { validateBody, validateParams } from '../middleware/validate';
+import { authenticate } from '../middleware/authenticate.js';
+import { validateBody, validateParams } from '../middleware/validate.js';
 import {
   paymentCreateSchema,
   paymentUpdateSchema,
   paymentIdParamSchema
-} from '../validation/payment.validation';
+} from '../validation/payment.validation.js';
 import {
   createPayment,
   getPayments,
   getPaymentById,
   updatePayment,
   deletePayment
-} from '../controllers/paymentController';
+} from '../controllers/paymentController.js';
 
 const router = express.Router();
 

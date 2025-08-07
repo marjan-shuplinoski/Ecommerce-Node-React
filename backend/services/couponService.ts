@@ -1,5 +1,5 @@
-import Coupon from '../models/Coupon';
-import { Coupon as CouponType } from '../types/coupon.types';
+import Coupon from '../models/Coupon.js';
+import { Coupon as CouponType } from '../types/coupon.types.js';
 
 export const createCoupon = async (couponData: CouponType) => {
   const coupon = new Coupon(couponData);

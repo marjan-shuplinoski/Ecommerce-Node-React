@@ -1,14 +1,14 @@
 
 import express from 'express';
-import { rbac } from '../middleware/rbac';
-import { authenticate } from '../middleware/authenticate';
-import { validateBody, validateParams } from '../middleware/validate';
+import { rbac } from '../middleware/rbac.js';
+import { authenticate } from '../middleware/authenticate.js';
+import { validateBody, validateParams } from '../middleware/validate.js';
 import {
   userRegisterSchema,
   userLoginSchema,
   userIdParamSchema,
   userUpdateSchema
-} from '../validation/user.validation';
+} from '../validation/user.validation.js';
 import {
   register,
   login,
@@ -18,7 +18,7 @@ import {
   getAllUsers,
   previewOrders,
   previewCart
-} from '../controllers/userController';
+} from '../controllers/userController.js';
 
 const router = express.Router();
 

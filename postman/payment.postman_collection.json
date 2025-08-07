@@ -1,0 +1,10 @@
+{
+  "info": {"name": "Payment API", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},
+  "item": [
+    {"name": "Create Payment","request": {"method": "POST","header": [{"key": "Content-Type", "value": "application/json"},{"key": "Authorization", "value": "Bearer <user_token>"}],"body": {"mode": "raw","raw": "{\n  \"user\": \"<userId>\",\n  \"amount\": 19.99,\n  \"method\": \"credit_card\",\n  \"status\": \"Pending\"\n}"},"url": {"raw": "http://localhost:5000/api/payments","host": ["http://localhost:5000"],"path": ["api","payments"]}}},
+    {"name": "Get All Payments","request": {"method": "GET","header": [{"key": "Authorization", "value": "Bearer <admin_token>"}],"url": {"raw": "http://localhost:5000/api/payments","host": ["http://localhost:5000"],"path": ["api","payments"]}}},
+    {"name": "Get Payment By ID","request": {"method": "GET","header": [{"key": "Authorization", "value": "Bearer <user_or_admin_token>"}],"url": {"raw": "http://localhost:5000/api/payments/<paymentId>","host": ["http://localhost:5000"],"path": ["api","payments","<paymentId>"]}}},
+    {"name": "Update Payment","request": {"method": "PUT","header": [{"key": "Content-Type", "value": "application/json"},{"key": "Authorization", "value": "Bearer <admin_token>"}],"body": {"mode": "raw","raw": "{\n  \"status\": \"Completed\"\n}"},"url": {"raw": "http://localhost:5000/api/payments/<paymentId>","host": ["http://localhost:5000"],"path": ["api","payments","<paymentId>"]}}},
+    {"name": "Delete Payment","request": {"method": "DELETE","header": [{"key": "Authorization", "value": "Bearer <admin_token>"}],"url": {"raw": "http://localhost:5000/api/payments/<paymentId>","host": ["http://localhost:5000"],"path": ["api","payments","<paymentId>"]}}}
+  ]
+}

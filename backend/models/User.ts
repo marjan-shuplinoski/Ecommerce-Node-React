@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema, Model } from 'mongoose';
-import { IUser, UserRole } from '../types/user.types';
+import { IUser, UserRole } from '../types/user.types.js';
 
 export interface IUserDocument extends IUser, Document {}
 

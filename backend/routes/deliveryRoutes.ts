@@ -1,18 +1,18 @@
 
 import express from 'express';
-import { validateBody, validateParams } from '../middleware/validate';
+import { validateBody, validateParams } from '../middleware/validate.js';
 import {
   deliveryCreateSchema,
   deliveryUpdateSchema,
   deliveryIdParamSchema
-} from '../validation/delivery.validation';
+} from '../validation/delivery.validation.js';
 import {
   createDelivery,
   getDeliveries,
   getDeliveryById,
   updateDelivery,
   deleteDelivery
-} from '../controllers/deliveryController';
+} from '../controllers/deliveryController.js';
 
 const router = express.Router();
 

@@ -1,5 +1,5 @@
-import Cart from '../models/Cart';
-import { Cart as ICart, CartItem } from '../types/cart.types';
+import Cart from '../models/Cart.js';
+import { Cart as ICart, CartItem } from '../types/cart.types.js';
 import { FilterQuery, UpdateQuery } from 'mongoose';
 
 const cartService = {
