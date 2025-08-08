@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { login } from '../services/authService';
@@ -8,7 +8,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { login: loginContext } = useAuth();
+  const { user, login: loginContext } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -16,15 +16,36 @@ const Login = () => {
     setLoading(true);
     setError('');
     try {
-      const user = await login({ email, password });
-      loginContext(user);
-      navigate('/');
+      const loggedInUser = await login({ email, password });
+      loginContext(loggedInUser);
+      // Redirect based on role
+      if (loggedInUser.role === 'admin') {
+        navigate('/admin/dashboard');
+      } else if (loggedInUser.role === 'merchant') {
+        navigate('/merchant/dashboard');
+      } else {
+        navigate('/user/dashboard');
+      }
     } catch (err: any) {
       setError(err.response?.data?.message || 'Login failed');
     } finally {
       setLoading(false);
     }
   };
+
+  // If already logged in, redirect to dashboard
+  useEffect(() => {
+    if (user) {
+      if (user.role === 'admin') {
+        navigate('/admin/dashboard');
+      } else if (user.role === 'merchant') {
+        navigate('/merchant/dashboard');
+      } else {
+        navigate('/user/dashboard');
+      }
+    }
+    // eslint-disable-next-line
+  }, [user]);
 
   return (
     <form onSubmit={handleSubmit} className="max-w-sm mx-auto mt-8 p-6 bg-white rounded-lg shadow">

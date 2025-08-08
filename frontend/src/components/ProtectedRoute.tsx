@@ -7,10 +7,20 @@ interface ProtectedRouteProps {
   allowedRoles?: string[];
 }
 
+
+const getDashboardRoute = (role: string) => {
+  if (role === 'admin') return '/admin/dashboard';
+  if (role === 'merchant') return '/merchant/dashboard';
+  return '/user/dashboard';
+};
+
 const ProtectedRoute = ({ children, allowedRoles }: ProtectedRouteProps) => {
   const { user } = useAuth();
   if (!user) return <Navigate to="/login" replace />;
-  if (allowedRoles && !allowedRoles.includes(user.role)) return <Navigate to="/" replace />;
+  if (allowedRoles && !allowedRoles.includes(user.role)) {
+    // Redirect to their own dashboard
+    return <Navigate to={getDashboardRoute(user.role)} replace />;
+  }
   return <>{children}</>;
 };
 

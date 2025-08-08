@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { register } from '../services/authService';
 import { useAuth } from '../hooks/useAuth';
 
-const roles = ['user', 'merchant', 'admin'] as const;
+const roles = ['user', 'merchant'] as const;
 
 type Role = typeof roles[number];
 
@@ -24,9 +24,9 @@ const Register = () => {
     setError('');
     setErrorDetails([]);
     try {
-      const user = await register({ name, email, password, role });
-      login(user);
-      navigate('/');
+      let payload: any = { name, email, password, role };
+      await register(payload);
+      navigate('/login');
     } catch (err: any) {
       console.log('Register error (full object):', err);
       setError(err.response?.data?.message || 'Registration failed');
@@ -65,13 +65,30 @@ const Register = () => {
         required
         className="w-full mb-3 px-4 py-2 border border-blue-400 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-blue-900 bg-white placeholder-blue-300"
       />
-      <select
-        value={role}
-        onChange={e => setRole(e.target.value as Role)}
-        className="w-full mb-4 px-4 py-2 border border-blue-400 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-blue-900 bg-white"
-      >
-        {roles.map(r => <option key={r} value={r}>{r}</option>)}
-      </select>
+      <div className="mb-4 flex space-x-6 justify-center">
+        <label className="inline-flex items-center">
+          <input
+            type="radio"
+            name="role"
+            value="user"
+            checked={role === 'user'}
+            onChange={() => setRole('user')}
+            className="form-radio text-blue-600 focus:ring-blue-500"
+          />
+          <span className="ml-2 text-blue-700">User</span>
+        </label>
+        <label className="inline-flex items-center">
+          <input
+            type="radio"
+            name="role"
+            value="merchant"
+            checked={role === 'merchant'}
+            onChange={() => setRole('merchant')}
+            className="form-radio text-blue-600 focus:ring-blue-500"
+          />
+          <span className="ml-2 text-blue-700">Merchant</span>
+        </label>
+      </div>
       <button
         type="submit"
         disabled={loading}

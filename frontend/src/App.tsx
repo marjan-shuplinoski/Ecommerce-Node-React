@@ -2,8 +2,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import Layout from './components/Layout';
+
 import Login from './pages/Login';
 import Register from './pages/Register';
+import UserDashboard from './pages/UserDashboard';
+import MerchantDashboard from './pages/MerchantDashboard';
+import AdminDashboard from './pages/AdminDashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
 
@@ -13,7 +17,6 @@ const Home = () => (
     <p className="text-lg text-gray-600">Your one-stop shop for everything you need.</p>
   </div>
 );
-const AdminPage = () => <h2>Admin Only Page</h2>;
 
 function App() {
   return (
@@ -24,9 +27,19 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/admin" element={
+            <Route path="/user/dashboard" element={
+              <ProtectedRoute allowedRoles={["user"]}>
+                <UserDashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="/merchant/dashboard" element={
+              <ProtectedRoute allowedRoles={["merchant"]}>
+                <MerchantDashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/dashboard" element={
               <ProtectedRoute allowedRoles={["admin"]}>
-                <AdminPage />
+                <AdminDashboard />
               </ProtectedRoute>
             } />
           </Routes>
